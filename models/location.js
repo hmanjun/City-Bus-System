@@ -19,32 +19,32 @@ Location.init({
         }
     },
 
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'user',
-            key: 'id'
-        }
-    },
+    // user_id: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     references: {
+    //         model: 'user',
+    //         key: 'id'
+    //     }
+    // },
     
-    route_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'route',
-            key: 'id'
-        }
-    },
+    // route_id: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     references: {
+    //         model: 'route',
+    //         key: 'id'
+    //     }
+    // },
 
-    Stop_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'Stop',
-            key: 'id'
-        }   
-    }
+    // Stop_id: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     references: {
+    //         model: 'Stop',
+    //         key: 'id'
+    //     }   
+    // }
 },
 {
 sequelize,
