@@ -1,5 +1,5 @@
 const {Model, DataTypes} = require('sequelize')
-const sequelize = require('../config/connection')
+const sequelize = require('../config/connections')
 
 class RouteStop extends Model {}
 
@@ -38,3 +38,5 @@ RouteStop.init({
     underscored: true,
     modelName: 'routestop'
 })
+
+module.exports = RouteStop
