@@ -18,7 +18,6 @@ Location.init({
             notEmpty: true
         }
     },
-
     // user_id: {
     //     type: DataTypes.INTEGER,
     //     allowNull: false,
