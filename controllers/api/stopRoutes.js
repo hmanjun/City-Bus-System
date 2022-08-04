@@ -20,5 +20,18 @@ router.get('/:location/', async (req,res) => {
 })
 
 router.get('/:location/:id', async (req,res) => {
-    
+    try{
+        const stopData = await Stop.findOne({
+            where: {location_id: req.params.location, id: req.params.id}
+        })
+
+        if(!stopData){
+            res.status(400).json({message: `Could not find any stops with that id`})
+            return
+        }
+
+        res.status(200).json(stopData)
+    } catch (err) {
+        res.status(400).json(err)
+    }
 })
