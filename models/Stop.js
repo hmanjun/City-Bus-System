@@ -1,34 +1,29 @@
 const {Model, DataTypes} = require('sequelize')
 const sequelize = require('../config/connection')
 
-class RouteStop extends Model {}
+class Stop extends Model {}
 
-RouteStop.init({
+Stop.init({
     id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
         autoIncrement: true,
+        allowNull: false,
         primaryKey: true
     },
-    route_id: {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+    location_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'route',
+            model: 'location',
             key: 'id'
         }
-    },
-    stop_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'stop',
-            key: 'id'
-        }
-    },
-    sequence: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
     }
 },
 {
@@ -36,5 +31,7 @@ RouteStop.init({
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'routestop'
+    modelName: 'stop'
 })
+
+module.exports = Stop
