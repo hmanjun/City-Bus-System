@@ -25,7 +25,7 @@ router.get('/:location/:id', async (req,res) => {
     try{
         const stopData = await Stop.findOne({
             where: {location_id: req.params.location, id: req.params.id},
-            include: {model: RouteStop, required: true}
+            include: {model: Route}
         })
 
         if(!stopData){
