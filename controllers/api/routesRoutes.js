@@ -21,16 +21,23 @@ router.get('/:location', async (req,res) => {
 router.post('/:location', async (req,res) => {
     try{
         const {name, stops} = req.body
+        
         const routeData = await Route.create({
             name,
             location_id: req.params.location
         })
-        /*
-        const routeStopData = stops.map((stop) => {
-            const rsData = RouteStop.create()
+
+        
+        const routeStopsArr = stops.map((stop) => {
+            return {
+                route_id: routeData.id,
+                stop_id: stop.stop_id,
+                sequence: stop.sequence
+            }
         })
-        */
-        res.status(200).json(routeData)
+
+        const routeStopData = await RouteStop.bulkCreate(routeStopsArr)
+        res.status(200).json({routeData,routeStopData})
     } catch (err) {
         res.status(400).json(err)
     }

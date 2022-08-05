@@ -42,7 +42,10 @@ router.get('/:location/:id', async (req,res) => {
 //Add a stop
 router.post('/:location', async (req,res) => {
     try{
-        const stopData = await Stop.create(req.body)
+        const stopData = await Stop.create({
+            ...req.body,
+            location_id: req.params.location
+        })
 
         res.status(200).json(stopData)
     } catch (err) {

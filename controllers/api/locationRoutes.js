@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {Location} = require('../../models')
 
-router.post('/location', async (req,res) => {
+router.post('/', async (req,res) => {
     try {
         const locationData = await Location.create(req.body)
 
