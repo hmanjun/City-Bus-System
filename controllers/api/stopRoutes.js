@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const {Stop} = require('../../models')
+const {Stop, RouteStop, Route} = require('../../models')
 
+//Get all stops for a single location
 router.get('/:location/', async (req,res) => {
     try {
         const stopData = await Stop.findAll({
@@ -19,10 +20,12 @@ router.get('/:location/', async (req,res) => {
     } 
 })
 
+//Get information for a single stop
 router.get('/:location/:id', async (req,res) => {
     try{
         const stopData = await Stop.findOne({
-            where: {location_id: req.params.location, id: req.params.id}
+            where: {location_id: req.params.location, id: req.params.id},
+            include: {model: RouteStop, required: true}
         })
 
         if(!stopData){
@@ -35,5 +38,35 @@ router.get('/:location/:id', async (req,res) => {
         res.status(400).json(err)
     }
 })
+
+//Add a stop
+router.post('/:location', async (req,res) => {
+    try{
+        const stopData = await Stop.create(req.body)
+
+        res.status(200).json(stopData)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+//Delete a stop
+router.delete('/:location/:id', async (req,res) => {
+    try {
+        const stopData = await Stop.destroy({
+            where: {id: req.params.id}
+        })
+
+        if(!stopData){
+            res.status(400).json({message: `No stop found with that id`})
+            return
+        }
+
+        res.status(200).json(stopData)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
 
 module.exports = router
