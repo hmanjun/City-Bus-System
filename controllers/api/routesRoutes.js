@@ -4,7 +4,8 @@ const {Route, RouteStop, Stop} = require('../../models')
 router.get('/:location', async (req,res) => {
     try{
         const routeData = await Route.findAll({
-            where: {location_id: req.params.location}
+            where: {location_id: req.params.location},
+            include: {model: Stop}
         })
 
         if(!routeData){
@@ -57,7 +58,7 @@ router.put('/:location/:id', async (req,res) => {
 
         const routeStopsArr = stops.map((stop) => {
             return {
-                route_id: routeData.id,
+                route_id: req.params.id,
                 stop_id: stop.stop_id,
                 sequence: stop.sequence
             }
