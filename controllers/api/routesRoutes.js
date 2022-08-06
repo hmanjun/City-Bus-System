@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Route, RouteStop, Stop} = require('../../models')
+const { route } = require('./locationRoutes')
 
 router.get('/:location', async (req,res) => {
     try{
@@ -16,6 +17,21 @@ router.get('/:location', async (req,res) => {
         res.status(200).json(routeData)
     } catch (err) {
         res.status(400).json(err)
+    }
+})
+
+router.get('/:location/:id', async (req,res) => {
+    try {
+        const routeData = await Route.findByPk(req.params.id,
+            {include: {model: Stop}})
+        
+        if(!routeData){
+            res.status(400).json({message: `Could not found a route with that id`})
+            return
+        }
+        res.status(200).json(routeData)
+    } catch (err) {
+        res.status(200).json(err)
     }
 })
 
