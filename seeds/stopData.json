@@ -1,0 +1,39 @@
+[
+    {
+        "name": "Powell St",
+        "location_id": 2
+
+    },
+    {
+        "name": "Sutter St",
+        "location_id": 2
+
+    },
+    {
+        "name": "Geary St",
+        "location_id": 2
+
+    },
+    {
+        "name": "Lombard St",
+        "location_id": 2
+
+    },
+    {
+        "name": "Hyde St",
+        "location_id": 2
+
+    },
+    {
+        "name": "Van Ness Ave",
+        "location_id": 2
+
+    },
+    {
+        "name": "Pine St",
+        "location_id": 2
+
+    }
+
+]
+

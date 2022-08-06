@@ -1,18 +1,18 @@
-const sequelize = require('../config/connection');
-// const { User, Project } = require('../models');
-const seedLocation = require('./locationData');
-const seedStop = require('./stopData');
+const sequelize = require('../config/connections');
+const { Location, Stop } = require('../models');
 
-const seedAll = async () => {
-    await sequilize.sync({ force: true });
+const locationData = require('./locationData.json');
+const stopData = require('./stopData.json');
 
-    // To Do:
-    // const routes = await Route.bulkCreate()
-    await seedLocation();
-    
-    await seedStop();
+const seedDatabase = async () => {
+    await sequelize.sync({ force: true });
+
+    const locations = await Location.bulkCreate(locationData);
+
+    const stops = await Stop.bulkCreate(stopData);
 
     process.exit(0);
+
 };
 
-seedAll();
+seedDatabase();
