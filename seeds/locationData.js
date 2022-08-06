@@ -1,44 +1,26 @@
 const { Location } = require('../models')
 
-const locationdata = [
+[
     {
-        name: '1',
+        name: 'Los Angeles',
       
     },
     {
-        name: '2',
+        name: 'San Francisco',
     
     },
     {
-        name: '3',
+        name: 'Sacramento',
       
     },
     {
-        name: '4',
+        name: 'San Diego',
       
     },
     {
-        name: '5',
+        name: 'Portland',
      
-    },
-    {
-        name: '6',
-
-    },
-    {
-        name: '7',
-
-    },
-    {
-        name: '8',
-
-    },
-    {
-        name: '9',
- 
-    },
+    }
+   
 ];
 
-const seedlocation = () => Location.bulkCreate(locationdata);
-
-module.exports = seedlocation;
