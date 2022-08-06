@@ -65,7 +65,7 @@ router.delete('/:location/:id', async (req,res) => {
             return
         }
 
-        res.status(200).json(stopData)
+        res.status(200).json({message: `Deleted stop with id ${req.params.id}`})
     } catch (err) {
         res.status(400).json(err)
     }
