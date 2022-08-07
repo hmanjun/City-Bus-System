@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Stop, RouteStop, Route} = require('../../models')
+const withAuth = require('../../util/auth')
 
 //Get all stops for a single location
 router.get('/:location/', async (req,res) => {
@@ -40,7 +41,7 @@ router.get('/:location/:id', async (req,res) => {
 })
 
 //Add a stop
-router.post('/:location', async (req,res) => {
+router.post('/:location', withAuth ,async (req,res) => {
     try{
         const stopData = await Stop.create({
             ...req.body,
@@ -54,7 +55,7 @@ router.post('/:location', async (req,res) => {
 })
 
 //Delete a stop
-router.delete('/:location/:id', async (req,res) => {
+router.delete('/:location/:id', withAuth ,async (req,res) => {
     try {
         const stopData = await Stop.destroy({
             where: {id: req.params.id}
