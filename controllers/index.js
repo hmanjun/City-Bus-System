@@ -7,8 +7,8 @@ const apiRoutes = require('./api')
 
 
 router.use('/', homeRoutes)
-router.use('/login',loginRoutes)
-router.use('./stopPageRoutes')
+router.use('/login', loginRoutes)
+router.use('./stopPageRoutes', stopPageRoutes)
 router.use('/api',apiRoutes)
 
 module.exports = router;
