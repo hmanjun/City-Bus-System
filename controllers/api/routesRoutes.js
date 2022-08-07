@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Route, RouteStop, Stop} = require('../../models')
+const withAuth = require('../../util/auth')
 
 router.get('/:location', async (req,res) => {
     try{
@@ -34,7 +35,7 @@ router.get('/:location/:id', async (req,res) => {
     }
 })
 
-router.post('/:location', async (req,res) => {
+router.post('/:location', withAuth ,async (req,res) => {
     try{
         const {name, stops} = req.body
         
@@ -59,7 +60,7 @@ router.post('/:location', async (req,res) => {
     }
 })
 
-router.put('/:location/:id', async (req,res) => {
+router.put('/:location/:id', withAuth ,async (req,res) => {
     try{
         const {name, stops} = req.body
 
@@ -88,7 +89,7 @@ router.put('/:location/:id', async (req,res) => {
     }
 })
 
-router.delete('/:location/:id', async (req,res) => {
+router.delete('/:location/:id', withAuth ,async (req,res) => {
     try{
         const routeData = await Route.destroy({
             where : {id: req.params.id}
