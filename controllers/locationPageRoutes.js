@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Stop, Route } = require('../models');
+const { Stop, Route, Location } = require('../models');
 
 router.get('/:location_id', async (req, res) => {
     try {
@@ -13,7 +13,10 @@ router.get('/:location_id', async (req, res) => {
         })
         const routes = await routeData.map((route) => route.get({ plain:true }))
 
-        res.render('locationpage', { stops, routes, logged_in: req.session.logged_in })
+        const locationData = await Location.findByPk(req.params.location_id)
+        const location = locationData.get({ plain: true })
+
+        res.render('locationpage', { stops, routes, location, logged_in: req.session.logged_in })
 
     } catch (err) {
         res.status(500).json(err);
