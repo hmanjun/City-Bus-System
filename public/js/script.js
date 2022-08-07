@@ -1,5 +1,4 @@
 $(".city-btn").on("click", function () {
     const location_id = $(this).data("id")
-    console.log(location_id)
-    console.log("clicked")
+    window.open(`/location/${location_id}`, "_self")
 })
