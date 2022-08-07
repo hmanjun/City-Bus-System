@@ -2,11 +2,6 @@ body {
   background-image: url("/images/city-background.jpeg");
   width: 100vw;
   height: 100vh;
-};
-
-#locations-list {
-  width: 50%;
-  
 }
 
 #nav-bar{
