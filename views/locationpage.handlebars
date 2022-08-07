@@ -1,0 +1,17 @@
+<div class="d-flex flex-column align-items-center">
+    <h1>{{location.name}}</h1>
+    <div class="d-flex flex-column align-items-center">
+        <h2>Stops</h2>
+        <div class="list-group">
+            {{#each stops as |stop|}}
+            <button type="button" class="list-group-item list-gourp-item-action" data-id="{{stop.id}}">{{stop.name}}</button>
+            {{/each}}
+        </div>
+        <h2>Routes</h2>
+        <div class="list-group">
+            {{#each routes as |route|}}
+            <button type="button" class="list-group-item list-gourp-item-action" data-id="{{route.id}}">{{route.name}}</button>
+            {{/each}}
+        </div>
+    </div>
+</div>
