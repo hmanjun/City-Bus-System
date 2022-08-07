@@ -26,7 +26,7 @@ router.get('/:location/:id', async (req,res) => {
             {include: {model: Stop}})
         
         if(!routeData){
-            res.status(400).json({message: `Could not found a route with that id`})
+            res.status(400).json({message: `Could not find a route with that id`})
             return
         }
         res.status(200).json(routeData)
