@@ -10,54 +10,34 @@
     <title>City Bus System</title>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">City Bus System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                {{#if logged_in}}
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Logout<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Manage</a>
-                  </li>
-                {{else}}
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Login</a>
-                </li>
-                {{/if}}
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Select City</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Bus Routes</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Bus Stops</a>
-                  </li>
-              </ul>
-            </div>
-          </nav>
-    </header>
-    <main class="d-flex justify-content-center align-items-center">
-      <div class="bg-secondary d-flex flex-column align-items-center p-3" style="width:50%;">
 
+  <nav class="bg-light">
+    <ul class="d-flex flex-row flex-wrap" id="nav-bar">
+      <li class="m-2">
+        <a class="n-links" href="/">City Bus System</a> 
+      </li>
+      {{#if logged_in}}
+      <li class="m-2">
+        <a class="n-links" href="">Manage</a>
+      </li>
+      <li class="m-2">
+        <a class="n-links" href="">Logout</a>
+      </li>
+      {{else}}
+      <li class="m-2">
+        <a class="n-links" href="/login">Login</a>
+      </li>
+      {{/if}}
+    </ul>
+  </nav>
 
+  <main class="d-flex justify-content-center align-items-center">
+    <div class="bg-secondary d-flex flex-column align-items-center p-2 m-2">
+      {{{ body }}}
+    </div>
+  </main>
 
-        {{{ body }}}
-
-      </div>
-
-    </main>
-    <footer>
-
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 </body>
 </html>
