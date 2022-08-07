@@ -1,0 +1,31 @@
+[
+    {
+      "name": "30 Stockton",
+      "location_id": 2
+
+    },
+    {
+        "name": "7 Haight",
+        "location_id": 2
+    },
+    {
+        "name": "5 Geary",
+        "location_id": 2
+
+    },
+    {
+        "name": "10 California",
+        "location_id": 2
+
+    },
+    {
+        "name": "3 Dolores",
+        "location_id": 2
+
+    },
+    {
+        "name": "9 Van Ness",
+        "location_id": 2
+    }
+    
+]
