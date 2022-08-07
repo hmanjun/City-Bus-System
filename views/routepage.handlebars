@@ -1,0 +1,25 @@
+<div class="d-flex flex-column align-items-center" >
+<h1>{{ route.name }}</h1>
+<h2>Out Bound</h2>
+<table class="table">
+    <thead>
+        <tr>
+           <th scope="col">
+            Sequence
+           </th> 
+           <th scope="col">
+            Stop Names
+           </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each route.stops as |stop|}}
+        <tr>
+            <th scope="row"{{stop.routestop.sequence}}></th>
+            <td data-id="{{stop.id}}">{{stop.name}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+</div>
