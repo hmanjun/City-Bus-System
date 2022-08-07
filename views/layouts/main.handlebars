@@ -12,20 +12,20 @@
 <body>
 
   <nav class="bg-light">
-    <ul style="list-style-type: none; margin: 0px; padding: 0px;">
-      <li>
-        <a href="/">City Bus System</a> 
+    <ul class="d-flex flex-row flex-wrap" id="nav-bar">
+      <li class="m-2">
+        <a class="n-links" href="/">City Bus System</a> 
       </li>
       {{#if logged_in}}
-      <li>
-        <a href="">Manage</a>
+      <li class="m-2">
+        <a class="n-links" href="">Manage</a>
       </li>
-      <li>
-        <a href="">Logout</a>
+      <li class="m-2">
+        <a class="n-links" href="">Logout</a>
       </li>
       {{else}}
-      <li>
-        <a href="/login">Login</a>
+      <li class="m-2">
+        <a class="n-links" href="/login">Login</a>
       </li>
       {{/if}}
     </ul>
