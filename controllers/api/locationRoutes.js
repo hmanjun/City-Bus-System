@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Location} = require('../../models')
+const withAuth = require('../../util/auth')
 
 router.get('/', async (req,res) => {
     try {
@@ -12,7 +13,7 @@ router.get('/', async (req,res) => {
     }
 })
 
-router.post('/', async (req,res) => {
+router.post('/', withAuth, async (req,res) => {
     try {
         const locationData = await Location.create(req.body)
 
