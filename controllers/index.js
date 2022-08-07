@@ -4,11 +4,13 @@ const homeRoutes = require('./homeRoutes')
 const loginRoutes = require('./loginRoutes')
 const stopPageRoutes = require ('./stopPageRoutes')
 const apiRoutes = require('./api')
+const locationPageRoutes = require('./locationPageRoutes')
 
 
 router.use('/', homeRoutes)
 router.use('/login', loginRoutes)
 router.use('./stopPageRoutes', stopPageRoutes)
 router.use('/api',apiRoutes)
+router.use('/location', locationPageRoutes)
 
 module.exports = router;
