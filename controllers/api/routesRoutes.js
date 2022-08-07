@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const {Route, RouteStop, Stop} = require('../../models')
-const { route } = require('./locationRoutes')
 
 router.get('/:location', async (req,res) => {
     try{
