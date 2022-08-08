@@ -7,6 +7,7 @@ const apiRoutes = require('./api')
 const locationPageRoutes = require('./locationPageRoutes')
 const routePageRoutes = require('./routePageRoutes')
 const managepageRoutes = require('./managePageRoutes')
+const editRoutes = require('./editRoutes')
 
 
 router.use('/', homeRoutes)
@@ -15,6 +16,7 @@ router.use('/stop', stopPageRoutes)
 router.use('/location', locationPageRoutes)
 router.use('/route', routePageRoutes)
 router.use('/manage', managepageRoutes)
+router.use('/edit', editRoutes)
 
 router.use('/api', apiRoutes)
 
