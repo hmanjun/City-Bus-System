@@ -33,3 +33,23 @@ $("#log-btn").on("click", async function () {
         })
     }
 })
+
+//Sign in
+$('#sign-btn').on("click", async function () {
+    const user_name = $("#sign-username").val()
+    const password = $("#sign-password").val()
+    const location = $("#inputGroupSelect01").val()
+    console.log(user_name, password, location)
+
+    if(user_name && password && location){
+        const body = {
+            user_name: user_name,
+            password: password,
+            location_id: location
+        }
+
+        $.post('api/user', body, () => {
+            console.log("created")
+        })
+    }
+})
