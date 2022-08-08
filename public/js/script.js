@@ -132,7 +132,7 @@ $("#add-new-route-btn").on("click", async function () {
     newRouteDataArr.forEach((elem, index) => {
         const obj = {
             sequence: index,
-            stop_id: elem
+            stop_id: elem + 1
         }
         stops.push(obj)
     })
@@ -167,4 +167,16 @@ $("#add-new-route-btn").on("click", async function () {
             }
         })
     }
+})
+
+//Open add stop
+$("#ed-stop-btn").on("click", async function () {
+    const stop_id = $("#stop-2-edit").val()
+    window.open(`/edit/stop/${stop_id}`, "_self")
+})
+
+//Open edit route
+$("#ed-route-btn").on("click", async function () {
+    const route_id = $("#route-2-edit").val()
+    window.open(`/edit/route/${route_id}`, "_self")
 })
