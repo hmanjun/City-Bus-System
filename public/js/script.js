@@ -53,8 +53,10 @@ $('#sign-btn').on("click", async function () {
             location_id: location
         }
 
-        $.post('api/user', body, () => {
-            console.log("created")
+        $.post('api/user', body, (response) => {
+            if(response.id){
+                window.open('/',"_self")
+            }
         })
     }
 })
