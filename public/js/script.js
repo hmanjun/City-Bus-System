@@ -67,3 +67,4 @@ $("#logout-btn").on("click", async function() {
         window.open('/',"_self")
     })
 })
+

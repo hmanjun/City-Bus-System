@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
       req.session.logged_in = true;
       req.session.location_id = userData.location_id
       console.log("reached")
-      
+
       res.status(200).json(userData);
     });
   } catch (err) {

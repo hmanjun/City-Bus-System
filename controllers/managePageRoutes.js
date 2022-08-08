@@ -6,7 +6,7 @@ router.get('/', async (req,res) => {
 
         console.log(req.session.location_id)
         const stopData = await Stop.findAll({
-            where: { location_id: req.session.location_id }
+            where: { location_id: req.session.location_id}
         })
         const stops = await stopData.map((stop) => stop.get({ plain:true }));
 
