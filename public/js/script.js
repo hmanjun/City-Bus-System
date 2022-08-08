@@ -60,3 +60,10 @@ $('#sign-btn').on("click", async function () {
         })
     }
 })
+
+//Logout
+$("#logout-btn").on("click", async function() {
+    await $.post('api/user/logout',{}, () =>{
+        window.open('/',"_self")
+    })
+})
