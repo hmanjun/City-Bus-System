@@ -28,8 +28,13 @@ $("#log-btn").on("click", async function () {
             password: password
         }
 
-        $.post('api/user/login', body, () => {
-            window.open('/')
+        $.post('api/user/login', body, (response) => {
+            console.log(response)
+            if(response.message == "You are now logged in!"){
+                window.open('/', "_self")
+            } else{
+                alert("Failed to login")
+            }
         })
     }
 })
