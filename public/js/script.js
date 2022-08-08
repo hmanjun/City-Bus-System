@@ -111,4 +111,31 @@ $(".add-stop-2-route").on("click", function () {
     container.append(seq1)
 })
 
-$("")
+//Add new route to db
+$("#add-new-route-btn").on("click", function () {
+    const name = $("#new-route-name").val()
+    const stops = []
+    newRouteDataArr.forEach((elem, index) => {
+        const obj = {
+            sequence: index,
+            stop_id: elem
+        }
+        stops.push(obj)
+    })
+
+    const body = {
+        name: name,
+        stops: stops
+    }
+
+    const location = $("#new-route-name").data("location")
+    console.log(location)
+    $.post(`/api/route/${location}`, body, (response) =>{
+        if(response.routeData.id){
+            window.open('/manage', "_self")
+        } else {
+            alert("An error occured when trying to add route")
+        }
+    })
+
+})

@@ -1,7 +1,7 @@
 <div class="d-flex flex-column align-items-center">
     <h1 class="text-light">Add Route</h1>
     <h2>Route Name</h2>
-    <input type="text" id="new-stop">
+    <input type="text" id="new-route-name" data-location="{{location_id}}">
     <h2>Add stops</h2>
     <div class="d-flex flex-row justify-content-center flex-wrap">
         {{#each stops as |stop|}}
@@ -11,5 +11,5 @@
     <div id="add-spps" class="d-flex flex-column align-items-center">
         <h3>Added:</h3>
     </div>
-    <button type="button" id="add-stop-btn" class="btn btn-light mt-2">Submit</button>
+    <button type="button" id="add-new-route-btn" class="btn btn-light mt-2">Submit</button>
 </div>
