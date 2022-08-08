@@ -6,6 +6,7 @@ const stopPageRoutes = require ('./stopPageRoutes')
 const apiRoutes = require('./api')
 const locationPageRoutes = require('./locationPageRoutes')
 const routePageRoutes = require('./routePageRoutes')
+const managepageRoutes = require('./managepageRoutes')
 
 
 router.use('/', homeRoutes)
@@ -13,6 +14,8 @@ router.use('/login', loginRoutes)
 router.use('./stopPageRoutes', stopPageRoutes)
 router.use('/location', locationPageRoutes)
 router.use('/route', routePageRoutes)
+router.use('/manage', managepageRoutes)
+
 router.use('/api', apiRoutes)
 
 
