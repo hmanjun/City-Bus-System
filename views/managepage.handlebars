@@ -1,10 +1,35 @@
 <div class="d-flex flex-column align-items-center">
-    <h1 class="text-light">{{location.name}}</h1>
+    <h2 class="text-light">{{location.name}}</h2>
     <div class="d-flex flex-column align-items-center">
         <h1>Add</h1>
         <div class="d-flex flex-row justify-content-center">
-            <button type="button" class="btn btn-light" id="add-route-btn">Add Route</button>
-            <button type="button" class="btn btn-light" id="add-stop-btn">Add Stop</button>
+            <button type="button" class="btn btn-light" id="add-route-btn m-2">Add Route</button>
+            <button type="button" class="btn btn-light" id="add-stop-btn m-2">Add Stop</button>
         </div>
     </div>
-</div>
+    <div class="d-flex flex-column align-items-center bg-dark">
+        <h1>Edit</h1>
+        <div class="d-flex flex-row justify-content-center">
+            <div class="d-flex flex-column align-items-center">
+                <h2>Edit Route</h2>
+                <select class="form-select" id="route-2-edit">
+                    <option selected>Choose Route...</option>
+                    {{#each routes as |route|}}
+                    <option value="{{route.id}}">{{route.name}}</option>
+                    {{/each}}
+                </select>
+                <button type="button" class="btn btn-light" id="ed-route-btn">Select</button>
+            </div>
+            <div class="d-flex flex-column align-items-center">
+                <h2>Edit Stop</h2>
+                <select class="form-select" id="route-2-edit">
+                    <option selected>Choose Stop...</option>
+                    {{#each stops as |stop|}}
+                    <option value="{{stop.id}}">{{stop.name}}</option>
+                    {{/each}}
+                </select>
+                <button type="button" class="btn btn-light" id="ed-stop-btn">Select</button>
+            </div>
+        </div>
+    </div>
+</div
