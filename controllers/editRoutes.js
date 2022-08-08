@@ -22,4 +22,15 @@ router.get('/route', async (req,res) => {
     }
 })
 
+router.get('/stop/:stop_id', async (req,res) => {
+    try{
+        const stopData = await Stop.findByPk(req.params.stop_id)
+        const stops = stopData.get({ plain:true })
+
+        res.render('addstoppage', {stops, logged_in: req.session.logged_in, location_id: req.session.location_id, edit: true})
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router

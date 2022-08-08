@@ -1,6 +1,12 @@
 <div class="d-flex flex-column align-items-start">
+    {{#if edit}}
+    <h1 class="text-light">Edit Stop</h1>
+    <h2>Stop Name</h2>
+    <input type="text" id="new-stop-name" data-location="{{location_id}}" value="{{stops.name}}">
+    {{else}}
     <h1 class="text-light">Add Stop</h1>
     <h2>Stop Name</h2>
     <input type="text" id="new-stop-name" data-location="{{location_id}}">
+    {{/if}}
     <button type="button" id="add-stop-btn" class="btn btn-light mt-2">Submit</button>
 </div>
