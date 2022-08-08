@@ -68,3 +68,22 @@ $("#logout-btn").on("click", async function() {
     })
 })
 
+//Add stop
+$("#add-stop-btn").on("click", async function() {
+    const name = $("#new-stop-name").val()
+    const location = $("#new-stop-name").data("location")
+    
+    if(name){
+        const body = {
+            name: name
+        }
+        await $.post(`/api/stop/${location}`, body, (response) => {
+            if(response.name){
+                window.open('/manage', "_self")
+            } else {
+                alert("An error occured when trying to add stop")
+            }
+        })
+    }
+    
+})
