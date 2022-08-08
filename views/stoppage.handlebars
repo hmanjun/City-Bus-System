@@ -1,0 +1,10 @@
+<div class="d-flex flex-column align-items-center">
+    <h1 class="text-light">{{stop.name}}</h1>
+    <h2>All Routes</h2>
+    <div class="list-group" id="locations-list">
+    {{#each stop.routes as |route|}}
+    <button type="button" class="list-group-item list-group-item-action route-btn" data-id="
+    {{route.id}}">{{route.name}}</button>
+    {{/each}}
+    </div>
+</div>
