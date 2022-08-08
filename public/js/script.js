@@ -13,5 +13,5 @@ $(".route-btn").on("click", function () {
 //Open stop data page from click on location page
 $(".stop-btn").on("click", function () {
     const stop_id = $(this).data("id")
-    window.open(`stop/${stop_id}`, "_self")
+    window.open(`/stop/${stop_id}`, "_self")
 })
