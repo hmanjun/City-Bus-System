@@ -5,20 +5,11 @@
     <h2>Add stops</h2>
     <div class="d-flex flex-row justify-content-center flex-wrap">
         {{#each stops as |stop|}}
-        <button type="button" class="btn btn-primary add-stop-2-route m-2" data-id="{{stop.id}}">{{stop.name}}</button>
+        <button type="button" class="btn btn-primary add-stop-2-route m-2" data-id="{{stop.id}}" data-name="{{stop.name}}">{{stop.name}}</button>
         {{/each}}
     </div>
-    <table class="table bg-light m-1">
-        <thead>
-            <tr>
-            <th scope="col">
-                Sequence
-            </th> 
-            <th scope="col">
-                Stop Names
-            </th>
-            </tr>
-        </thead>
-    </table>
+    <div id="add-spps" class="d-flex flex-column align-items-center">
+        <h3>Added:</h3>
+    </div>
     <button type="button" id="add-stop-btn" class="btn btn-light mt-2">Submit</button>
 </div>

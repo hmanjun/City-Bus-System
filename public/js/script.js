@@ -1,3 +1,5 @@
+var newRouteDataArr = []
+
 //Open location data from home button click
 $(".city-btn").on("click", function () {
     const location_id = $(this).data("id")
@@ -85,5 +87,28 @@ $("#add-stop-btn").on("click", async function() {
             }
         })
     }
-    
 })
+
+//Open add stop
+$("#m-add-stop-btn").on("click", async function () {
+    window.open('/edit/stop', "_self")
+})
+
+//Open add route
+$("#m-add-route-btn").on("click", async function () {
+    window.open('/edit/route', "_self")
+})
+
+//Add stop to new route
+$(".add-stop-2-route").on("click", function () {
+    const stop_id = $(this).data("id")
+    const stop_name = $(this).data("name")
+    console.log(stop_id, stop_name)
+    newRouteDataArr.push(stop_id)
+
+    const container = $("#add-spps")
+    const seq1 = $("<h3>").text(`${newRouteDataArr.length}  ${stop_name}`).addClass("text-light")
+    container.append(seq1)
+})
+
+$("")
