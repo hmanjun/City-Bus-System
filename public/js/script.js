@@ -15,3 +15,22 @@ $(".stop-btn").on("click", function () {
     const stop_id = $(this).data("id")
     window.open(`/stop/${stop_id}`, "_self")
 })
+
+//Login check
+$("#log-btn").on("click", async function () {
+    const user_name = $("#log-username")
+    const password = $("#log-password")
+
+    if(user_name && password){
+        const response = await fetch("/api/user/login", {
+            method: 'POST',
+            body: JSON.stringify({user_name, password}),
+            headers: { "Content-Type": "application/json" }
+        })
+        if (response.ok){
+            window.open('/')
+        } else {
+            alert("Failed login")
+        }
+    }
+})
