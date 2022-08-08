@@ -41,6 +41,8 @@ This application empowers an administrator to build a public transportation netw
 
 ## Code Snippet of significance:
 
+### Login
+![PG1](./img/login.gif)
 * ``` ```
 
 ## Contributions:
