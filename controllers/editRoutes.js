@@ -33,4 +33,23 @@ router.get('/stop/:stop_id', async (req,res) => {
     }
 })
 
+router.get('/route/:route_id', async (req,res) => {
+    try {
+        const routeData = await Route.findByPk(req.params.route_id,
+            {include: {model: Stop}})
+
+        const route = routeData.get({plain: true}) 
+        
+        const stopData = await Stop.findAll({
+            where: { location_id: req.session.location_id}
+        })
+        const stops = await stopData.map((stop) => stop.get({ plain:true }));
+
+        res.render('addroutepage', {route, stops, logged_in: req.session.logged_in, location_id: req.session.location_id, edit: true})
+        
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router

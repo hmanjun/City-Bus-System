@@ -90,15 +90,16 @@ $("#add-stop-btn").on("click", async function() {
                     window.open('/manage', "_self")
                 }
             })
-        }    
+        } else {  
 
-        await $.post(`/api/stop/${location}`, body, (response) => {
-            if(response.name){
-                window.open('/manage', "_self")
-            } else {
-                alert("An error occured when trying to add stop")
-            }
-        })
+            await $.post(`/api/stop/${location}`, body, (response) => {
+                if(response.name){
+                    window.open('/manage', "_self")
+                } else {
+                    alert("An error occured when trying to add stop")
+                }
+            })
+        }
     }
 })
 
@@ -125,7 +126,7 @@ $(".add-stop-2-route").on("click", function () {
 })
 
 //Add new route to db
-$("#add-new-route-btn").on("click", function () {
+$("#add-new-route-btn").on("click", async function () {
     const name = $("#new-route-name").val()
     const stops = []
     newRouteDataArr.forEach((elem, index) => {
@@ -143,11 +144,27 @@ $("#add-new-route-btn").on("click", function () {
 
     const location = $("#new-route-name").data("location")
     console.log(location)
-    $.post(`/api/route/${location}`, body, (response) =>{
-        if(response.routeData.id){
-            window.open('/manage', "_self")
-        } else {
-            alert("An error occured when trying to add route")
-        }
-    })
+
+    const route_id = $("#new-route-name").data("route")
+    if(route_id){
+
+        await $.ajax({
+            url: `/api/route/${location}/${route_id}`,
+            type: "PUT",
+            data: body,
+            success: function(response){
+                window.open('/manage', "_self")
+            }
+        })
+
+    } else {
+
+        await $.post(`/api/route/${location}`, body, (response) =>{
+            if(response.routeData.id){
+                window.open('/manage', "_self")
+            } else {
+                alert("An error occured when trying to add route")
+            }
+        })
+    }
 })
