@@ -11,7 +11,7 @@ const managepageRoutes = require('./managepageRoutes')
 
 router.use('/', homeRoutes)
 router.use('/login', loginRoutes)
-router.use('./stopPageRoutes', stopPageRoutes)
+router.use('/stop', stopPageRoutes)
 router.use('/location', locationPageRoutes)
 router.use('/route', routePageRoutes)
 router.use('/manage', managepageRoutes)
