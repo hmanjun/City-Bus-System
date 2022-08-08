@@ -1,7 +1,7 @@
 <div class="d-flex flex-column align-items-center" >
-<h1>{{ route.name }}</h1>
+<h1 class="text-light">{{ route.name }}</h1>
 <h2>Out Bound</h2>
-<table class="table">
+<table class="table bg-light m-1">
     <thead>
         <tr>
            <th scope="col">
@@ -16,7 +16,9 @@
         {{#each route.stops as |stop|}}
         <tr>
             <th scope="row">{{stop.routestop.sequence}}</th>
-            <td data-id="{{stop.id}}">{{stop.name}}</td>
+            <td>
+                <button type="button" class="btn btn-secondary stop-btn" data-id="{{stop.id}}">{{stop.name}}</button>
+            </td>
         </tr>
         {{/each}}
     </tbody>
