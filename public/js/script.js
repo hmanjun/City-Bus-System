@@ -79,6 +79,19 @@ $("#add-stop-btn").on("click", async function() {
         const body = {
             name: name
         }
+        const stop_id = $("#new-stop-name").data("stop")
+        if(stop_id){
+
+            await $.ajax({
+                url: `/api/stop/${location}/${stop_id}`,
+                type: "PUT",
+                data: body,
+                success: function(response){
+                    window.open('/manage', "_self")
+                }
+            })
+        }    
+
         await $.post(`/api/stop/${location}`, body, (response) => {
             if(response.name){
                 window.open('/manage', "_self")
@@ -137,5 +150,4 @@ $("#add-new-route-btn").on("click", function () {
             alert("An error occured when trying to add route")
         }
     })
-
 })

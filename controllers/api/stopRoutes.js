@@ -54,6 +54,19 @@ router.post('/:location', withAuth ,async (req,res) => {
     }
 })
 
+//Edit a stop
+router.put('/:location/:id', withAuth, async (req,res) => {
+    try {
+        const stopData = await Stop.update({...req.body,location_id: req.params.location},
+            {where : {id: req.params.id}}
+        )
+
+        res.status(200).json(stopData)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 //Delete a stop
 router.delete('/:location/:id', withAuth ,async (req,res) => {
     try {
