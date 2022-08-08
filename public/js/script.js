@@ -15,3 +15,21 @@ $(".stop-btn").on("click", function () {
     const stop_id = $(this).data("id")
     window.open(`/stop/${stop_id}`, "_self")
 })
+
+//Login check
+$("#log-btn").on("click", async function () {
+    const user_name = $("#log-username").val()
+    const password = $("#log-password").val()
+    console.log(user_name,password)
+
+    if(user_name && password){
+        const body = {
+            user_name: user_name,
+            password: password
+        }
+
+        $.post('api/user/login', body, () => {
+            window.open('/')
+        })
+    }
+})
