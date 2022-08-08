@@ -3,8 +3,8 @@
     <div class="d-flex flex-column align-items-center">
         <h1>Add</h1>
         <div class="d-flex flex-row justify-content-center">
-            <button type="button" class="btn btn-light m-2" id="add-route-btn m-2">Add Route</button>
-            <button type="button" class="btn btn-light m-2" id="add-stop-btn m-2">Add Stop</button>
+            <button type="button" class="btn btn-light m-2" id="m-add-route-btn">Add Route</button>
+            <button type="button" class="btn btn-light m-2" id="m-add-stop-btn">Add Stop</button>
         </div>
     </div>
     <div class="d-flex flex-column align-items-center bg-dark p-3">
@@ -22,7 +22,7 @@
             </div>
             <div class="d-flex flex-column align-items-center m-1">
                 <h2 class="text-secondary">Edit Stop</h2>
-                <select class="form-select mb-2" id="route-2-edit">
+                <select class="form-select mb-2" id="stop-2-edit">
                     <option selected>Choose Stop...</option>
                     {{#each stops as |stop|}}
                     <option value="{{stop.id}}">{{stop.name}}</option>
