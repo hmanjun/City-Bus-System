@@ -4,7 +4,7 @@
         <h2>Stops</h2>
         <div class="list-group">
             {{#each stops as |stop|}}
-            <button type="button" class="list-group-item list-group-item-action" data-id="{{stop.id}}">{{stop.name}}</button>
+            <button type="button" class="list-group-item list-group-item-action stop-btn" data-id="{{stop.id}}">{{stop.name}}</button>
             {{/each}}
         </div>
         <h2>Routes</h2>
