@@ -131,8 +131,8 @@ $("#add-new-route-btn").on("click", async function () {
     const stops = []
     newRouteDataArr.forEach((elem, index) => {
         const obj = {
-            sequence: index,
-            stop_id: elem + 1
+            sequence: index + 1,
+            stop_id: elem
         }
         stops.push(obj)
     })
