@@ -180,3 +180,24 @@ $("#ed-route-btn").on("click", async function () {
     const route_id = $("#route-2-edit").val()
     window.open(`/edit/route/${route_id}`, "_self")
 })
+
+const nodePositions = {}
+//Get nodes
+const getNodes = async (location_id) => {
+    const response = await $.ajax({
+        url: `/api/stop/${location_id}`,
+        type: "GET"
+    })
+    const nodeArr = response.map((stop,index) => {
+        nodePositions[stop.id] = index
+        return {name: stop.name}
+    })
+    return nodeArr
+}
+
+//Create location map
+const urlSplit = window.location.href.split('/location')
+if(urlSplit.length == 2){
+    const nodes = getNodes(urlSplit[1])
+    console.log(nodePositions)
+}
