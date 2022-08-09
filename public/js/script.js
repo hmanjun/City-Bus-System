@@ -180,3 +180,98 @@ $("#ed-route-btn").on("click", async function () {
     const route_id = $("#route-2-edit").val()
     window.open(`/edit/route/${route_id}`, "_self")
 })
+
+const nodePositions = {}
+//Get nodes
+const getNodes = async (location_id) => {
+    const response = await $.ajax({
+        url: `/api/stop/${location_id}`,
+        type: "GET"
+    })
+    const nodeArr = response.map((stop,index) => {
+        nodePositions[stop.id] = index
+        return {name: stop.name}
+    })
+    return nodeArr
+}
+
+const bsort = (arr) => {
+    let swapped = false;
+    for(let i =0; i < arr.length-1; i++) {
+       if(arr[i].sequence > arr[i+1].sequence){
+           let swapElem = arr[i+1];
+           arr[i+1] = arr[i]
+           arr[i] = swapElem
+           swapped = true
+       }
+    }
+    if(swapped) return bsort(arr)
+    else return arr
+ }
+
+const getLinks = async (location_id, nodes) => {
+    const response = await $.ajax({
+        url: `/api/route/${location_id}`,
+        type: "GET"
+    })
+    const links = []
+    for(let i = 0; i < response.length; i++){
+        const stops = []
+        response[i].stops.forEach((stop) => {
+            stops.push({stop_id: stop.id, sequence: stop.routestop.sequence})
+        })
+        const sorted = bsort(stops)
+        for(let j = 1; j < sorted.length; j++){
+            const posS = nodePositions[sorted[j-1].stop_id]
+            const posT = nodePositions[sorted[j].stop_id]
+            links.push({source: nodes[posS], target: nodes[posT]})
+        }
+    }
+    return links
+}
+
+const urlSplit = window.location.href.split('/location')
+const createMap = async () => {
+    const location_id = urlSplit[1]
+    const nodes = await getNodes(location_id)
+    const links = await getLinks(location_id, nodes)
+    
+    const w = 300, h = 300
+
+    const circleWidth = 5
+
+    const colors = {
+        red: "#C61C6F",
+        gray: "640264"
+    }
+
+    const container = d3.select("#graph2").append("svg").attr("width",w).attr("height",h)
+
+    const force = d3.layout.force().nodes(nodes).links([]).gravity(0.1).charge(-200).size([w,h])
+
+    const link = container.selectAll(".linkLine").data(links).enter().append("line").attr("class", "linkLine").attr("stroke", "#CCC").attr("fill", "none")
+
+    link.insert("text").text((d) => d.name).attr("x",circleWidth+5).attr("y",circleWidth).attr("color", colors.gray).attr("font-size", "10px").attr("text-anchor", "end")
+
+    const node = container.selectAll("circle.node").data(nodes).enter().append("g").attr("class", "node")
+
+    node.append("svg:circle").attr("cx", (d) => d.x).attr("cy", (d) => d.y).attr("r", circleWidth).attr("fill",colors.red)
+
+    node.append("text").text((d) => d.name).attr("x",circleWidth+5).attr("y",circleWidth).attr("fill", colors.gray).attr("font-size", "1em").attr("text-anchor", "beginning")
+
+    force.on("tick", () => {
+        node.attr("transform", (d) => {
+            return `translate(${d.x},${d.y})`
+        })
+
+        link.attr("x1", (d) => d.source.x).attr("y1", (d) => d.source.y).attr("x2", (d) => d.target.x).attr("y2", (d) => d.target.y)
+    })
+
+    force.start()
+}
+
+//Create location map
+
+if(urlSplit.length == 2){
+    createMap()
+}
