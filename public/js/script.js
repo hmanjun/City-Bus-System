@@ -242,7 +242,7 @@ const createMap = async () => {
 
     const colors = {
         red: "#C61C6F",
-        gray: "#FCF4DC"
+        gray: "640264"
     }
 
     const container = d3.select("#graph2").append("svg").attr("width",w).attr("height",h)
