@@ -209,27 +209,36 @@ const bsort = (arr) => {
     else return arr
  }
 
-const getLinks = async (location_id) => {
+const getLinks = async (location_id, nodes) => {
     const response = await $.ajax({
         url: `/api/route/${location_id}`,
         type: "GET"
     })
-    const stops = []
+    const links = []
     for(let i = 0; i < response.length; i++){
-        //console.log(response[i])
+        const stops = []
         response[i].stops.forEach((stop) => {
             stops.push({stop_id: stop.id, sequence: stop.routestop.sequence})
         })
+        const sorted = bsort(stops)
+        for(let j = 1; j < sorted.length; j++){
+            const posS = nodePositions[sorted[j-1].stop_id]
+            const posT = nodePositions[sorted[j].stop_id]
+            links.push({source: nodes[posS], target: nodes[posT]})
+        }
     }
-    console.log(stops)
-    const sortedStops = bsort(stops)
-    console.log(sortedStops)
+    return links
+}
+const urlSplit = window.location.href.split('/location')
+const createMap = async () => {
+    const location_id = urlSplit[1]
+    const nodes = await getNodes(location_id)
+    const links = await getLinks(location_id, nodes)
+    console.log(links)
 }
 
 //Create location map
-const urlSplit = window.location.href.split('/location')
+
 if(urlSplit.length == 2){
-    const location_id = urlSplit[1]
-    const nodes = getNodes(location_id)
-    getLinks(location_id)
+    createMap()
 }
