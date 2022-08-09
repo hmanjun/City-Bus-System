@@ -195,9 +195,41 @@ const getNodes = async (location_id) => {
     return nodeArr
 }
 
+const bsort = (arr) => {
+    let swapped = false;
+    for(let i =0; i < arr.length-1; i++) {
+       if(arr[i].sequence > arr[i+1].sequence){
+           let swapElem = arr[i+1];
+           arr[i+1] = arr[i]
+           arr[i] = swapElem
+           swapped = true
+       }
+    }
+    if(swapped) return bsort(arr)
+    else return arr
+ }
+
+const getLinks = async (location_id) => {
+    const response = await $.ajax({
+        url: `/api/route/${location_id}`,
+        type: "GET"
+    })
+    const stops = []
+    for(let i = 0; i < response.length; i++){
+        //console.log(response[i])
+        response[i].stops.forEach((stop) => {
+            stops.push({stop_id: stop.id, sequence: stop.routestop.sequence})
+        })
+    }
+    console.log(stops)
+    const sortedStops = bsort(stops)
+    console.log(sortedStops)
+}
+
 //Create location map
 const urlSplit = window.location.href.split('/location')
 if(urlSplit.length == 2){
-    const nodes = getNodes(urlSplit[1])
-    console.log(nodePositions)
+    const location_id = urlSplit[1]
+    const nodes = getNodes(location_id)
+    getLinks(location_id)
 }
