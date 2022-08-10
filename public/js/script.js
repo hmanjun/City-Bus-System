@@ -1,5 +1,3 @@
-var newRouteDataArr = []
-
 //Open location data from home button click
 $(".city-btn").on("click", function () {
     const location_id = $(this).data("id")
@@ -113,7 +111,7 @@ $("#m-add-route-btn").on("click", async function () {
     window.open('/edit/route', "_self")
 })
 
-//Add stop to new route
+//Add stop to route stop arr
 $(".add-stop-2-route").on("click", function () {
     const stop_id = $(this).data("id")
     const stop_name = $(this).data("name")
@@ -125,7 +123,8 @@ $(".add-stop-2-route").on("click", function () {
     container.append(seq1)
 })
 
-//Add new route to db
+var newRouteDataArr = []
+//Add/Edit new route to db
 $("#add-new-route-btn").on("click", async function () {
     const name = $("#new-route-name").val()
     const stops = []
@@ -146,7 +145,7 @@ $("#add-new-route-btn").on("click", async function () {
     console.log(location)
 
     const route_id = $("#new-route-name").data("route")
-    if(route_id){
+    if(route_id){ //Edit route
 
         await $.ajax({
             url: `/api/route/${location}/${route_id}`,
@@ -157,7 +156,7 @@ $("#add-new-route-btn").on("click", async function () {
             }
         })
 
-    } else {
+    } else { //Add new route
 
         await $.post(`/api/route/${location}`, body, (response) =>{
             if(response.routeData.id){
@@ -195,6 +194,15 @@ const getNodes = async (location_id) => {
     return nodeArr
 }
 
+//Example node
+/*
+nodes = [
+    {name: "value"},
+    {name: "value"},
+    ...
+]
+*/
+
 const bsort = (arr) => {
     let swapped = false;
     for(let i =0; i < arr.length-1; i++) {
@@ -229,6 +237,15 @@ const getLinks = async (location_id, nodes) => {
     }
     return links
 }
+
+//Example Link
+/*
+links = [
+    {source: nodes[0], target: nodes[1]},
+    {source: nodes[1], target: nodes[2]},
+    ...
+]
+*/
 
 const urlSplit = window.location.href.split('/location')
 const createMap = async () => {
