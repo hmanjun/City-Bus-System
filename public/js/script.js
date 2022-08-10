@@ -171,13 +171,16 @@ $("#add-new-route-btn").on("click", async function () {
 //Open add stop
 $("#ed-stop-btn").on("click", async function () {
     const stop_id = $("#stop-2-edit").val()
-    window.open(`/edit/stop/${stop_id}`, "_self")
+    if(stop_id !== "Choose Stop...") window.open(`/edit/stop/${stop_id}`, "_self")
 })
 
 //Open edit route
 $("#ed-route-btn").on("click", async function () {
     const route_id = $("#route-2-edit").val()
-    window.open(`/edit/route/${route_id}`, "_self")
+    if(route_id !== "Choose Route..."){
+        window.open(`/edit/route/${route_id}`, "_self")
+    } 
+
 })
 
 const nodePositions = {}
