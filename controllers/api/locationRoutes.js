@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {Location} = require('../../models')
 const withAuth = require('../../util/auth')
 
+//Get all locations
 router.get('/', async (req,res) => {
     try {
         const locationData = await Location.findAll()
@@ -13,6 +14,7 @@ router.get('/', async (req,res) => {
     }
 })
 
+//Post a new location
 router.post('/', withAuth, async (req,res) => {
     try {
         const locationData = await Location.create(req.body)

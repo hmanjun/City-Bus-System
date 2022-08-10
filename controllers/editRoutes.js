@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {Stop, Route} = require('../models')
 
+//Get add stop page
 router.get('/stop', async (req,res) =>{
     try {
         res.render('addstoppage', {logged_in: req.session.logged_in, location_id: req.session.location_id})
@@ -9,6 +10,7 @@ router.get('/stop', async (req,res) =>{
     }
 })
 
+//Get add route page
 router.get('/route', async (req,res) => {
     try {
         const stopData = await Stop.findAll({
@@ -22,6 +24,7 @@ router.get('/route', async (req,res) => {
     }
 })
 
+//Get edit stop page by stop id
 router.get('/stop/:stop_id', async (req,res) => {
     try{
         const stopData = await Stop.findByPk(req.params.stop_id)
@@ -33,6 +36,7 @@ router.get('/stop/:stop_id', async (req,res) => {
     }
 })
 
+//Get edit route page by route id
 router.get('/route/:route_id', async (req,res) => {
     try {
         const routeData = await Route.findByPk(req.params.route_id,

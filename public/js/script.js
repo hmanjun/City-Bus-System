@@ -39,7 +39,7 @@ $("#log-btn").on("click", async function () {
     }
 })
 
-//Sign in
+//Sign up check
 $('#sign-btn').on("click", async function () {
     const user_name = $("#sign-username").val()
     const password = $("#sign-password").val()
@@ -203,6 +203,7 @@ nodes = [
 ]
 */
 
+//Helper function to sort route links by sequence number (use bubble sort)
 const bsort = (arr) => {
     let swapped = false;
     for(let i =0; i < arr.length-1; i++) {
@@ -217,6 +218,7 @@ const bsort = (arr) => {
     else return arr
  }
 
+ //Get routes and format it to be links
 const getLinks = async (location_id, nodes) => {
     const response = await $.ajax({
         url: `/api/route/${location_id}`,
@@ -247,6 +249,7 @@ links = [
 ]
 */
 
+//Get nodes and links from database and draw it dynamically on the location page
 const urlSplit = window.location.href.split('/location')
 const createMap = async () => {
     const location_id = urlSplit[1]
@@ -287,8 +290,8 @@ const createMap = async () => {
     force.start()
 }
 
-//Create location map
 
+//Create location map when in the location page
 if(urlSplit.length == 2){
     createMap()
 }
