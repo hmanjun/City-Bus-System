@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Route, Stop } = require('../models');
 
+//Get stop page by id
 router.get('/:stop_id', async (req, res) => {
     try {
         const stopData = await Stop.findByPk(req.params.stop_id,{

@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { Stop, Route, Location } = require('../models');
 
+//Get location page and load with all routes and stops with given id
 router.get('/:location_id', async (req, res) => {
     try {
         const stopData = await Stop.findAll({

@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {Stop, Route, Location} = require('../models')
 
+//Get manage page
 router.get('/', async (req,res) => {
     try {
 

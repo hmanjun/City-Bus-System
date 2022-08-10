@@ -17,33 +17,7 @@ Location.init({
         validate: {
             notEmpty: true
         }
-    },
-    // user_id: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    //     references: {
-    //         model: 'user',
-    //         key: 'id'
-    //     }
-    // },
-    
-    // route_id: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    //     references: {
-    //         model: 'route',
-    //         key: 'id'
-    //     }
-    // },
-
-    // Stop_id: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    //     references: {
-    //         model: 'Stop',
-    //         key: 'id'
-    //     }   
-    // }
+    }
 },
 {
 sequelize,

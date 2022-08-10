@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {Route, RouteStop, Stop} = require('../../models')
 const withAuth = require('../../util/auth')
 
+//Get all routes in a location
 router.get('/:location', async (req,res) => {
     try{
         const routeData = await Route.findAll({
@@ -20,6 +21,7 @@ router.get('/:location', async (req,res) => {
     }
 })
 
+//Get a specific route
 router.get('/:location/:id', async (req,res) => {
     try {
         const routeData = await Route.findByPk(req.params.id,
@@ -35,6 +37,7 @@ router.get('/:location/:id', async (req,res) => {
     }
 })
 
+//Post a new route in a location
 router.post('/:location', withAuth ,async (req,res) => {
     try{
         const {name, stops} = req.body
@@ -60,6 +63,7 @@ router.post('/:location', withAuth ,async (req,res) => {
     }
 })
 
+//Update a route with specific id
 router.put('/:location/:id', withAuth ,async (req,res) => {
     try{
         const {name, stops} = req.body
@@ -89,6 +93,7 @@ router.put('/:location/:id', withAuth ,async (req,res) => {
     }
 })
 
+//Delete a route by id
 router.delete('/:location/:id', withAuth ,async (req,res) => {
     try{
         const routeData = await Route.destroy({

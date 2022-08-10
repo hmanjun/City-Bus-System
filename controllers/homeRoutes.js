@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const { Location } = require('../models');
 
+//Get home page
 router.get('/', async (req, res) => {
     try {
         const locationData = await Location.findAll()
