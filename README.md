@@ -22,11 +22,15 @@ This application is intended to empower growing communities to serve their citiz
 
 This application empowers an administrator to build a public transportation network. The idea being that one can add routes, add stops, to a database that is viewable by the community it serves.
 
+## Deployed link
+
+[https://t12-bus-system.herokuapp.com/](https://t12-bus-system.herokuapp.com/)
+
 ## Installation:
 
 * ### From the Deployed Link:
     * On your browser, navigate to [City Bus System](https://harshs-bus-system.herokuapp.com/).
-    * The Citezens will be able to view routes and stops that exist in their city.
+    * The Citizens will be able to view routes and stops that exist in their city.
     * An administrator can create a username and password.
     * Now you are ready to create, modify and delete routes and stops in the city.
 
@@ -37,17 +41,15 @@ This application empowers an administrator to build a public transportation netw
     * Then type ```mysql -u root -p 'password'``` to connect to your MySQL shell.
     * Now type ```source ./db/shcema.sql``` to creat the database on your local machine.
     * That done you'll type ```quit``` to exit ```mysql```.
+    * Then seed the database by running ```npm run seed```.
     * Next type ```node server.js``` to connect the application to your local host allowing you to view the webpade in your browser by typing ```localhost:3001``` as the URL.
 
 ## Video of site in action:
 
 [City Bus System](https://drive.google.com/file/d/1sI-M-laaBCwQR-qC_2G4RWd7ApC2wfPx/view)
 
-## Code Snippet of significance:
-
 ### Login
 ![PG1](./img/login.gif)
-* ``` ```
 
 ## Contributions:
 
